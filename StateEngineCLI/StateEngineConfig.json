@@ -1,0 +1,92 @@
+{
+  "attributes": [
+    {
+      "name": "requesterName",
+      "type": "string"
+    },
+    {
+      "name": "requesterEmail",
+      "type": "email"
+    },
+    {
+      "name": "managerName",
+      "type": "string"
+    },
+    {
+      "name": "managerEmail",
+      "type": "email"
+    }
+  ],
+  "states": [
+    {
+      "name": "Start",
+      "type": "Transient",
+      "start": true,
+      "transitions": [
+        {
+          "action": "Initialize",
+          "nextState": "Created"
+        }
+      ]
+    },
+    {
+      "name": "Created",
+      "transitions": [
+        {
+          "action": "Submit",
+          "nextState": "SentToManager"
+        },
+        {
+          "action": "Cancel",
+          "nextState": "Canceled"
+        }
+      ]
+    },
+    {
+      "name": "SentToManager",
+      "transitions": [
+        {
+          "action": "RequestInfo",
+          "nextState": "RequestMoreInfo"
+        },
+        {
+          "action": "Approve",
+          "nextState": "Approved"
+        },
+        {
+          "action": "Reject",
+          "nextState": "Rejected"
+        },
+        {
+          "action": "Cancel",
+          "nextState": "Canceled"
+        }
+      ]
+    },
+    {
+      "name": "RequestMoreInfo",
+      "transitions": [
+        {
+          "action": "ProvideInfo",
+          "nextState": "SentToManager"
+        },
+        {
+          "action": "Cancel",
+          "nextState": "Canceled"
+        }
+      ]
+    },
+    {
+      "name": "Approved",
+      "transitions": []
+    },
+    {
+      "name": "Rejected",
+      "transitions": []
+    },
+    {
+      "name": "Canceled",
+      "transitions": []
+    }
+  ]
+}
