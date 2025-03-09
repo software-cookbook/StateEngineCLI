@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StateEngineCLI
 {
-    internal class Program 
+    public class Program 
     {
         private static bool reachedToTerminalState = false;
 
